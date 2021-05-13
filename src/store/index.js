@@ -37,6 +37,14 @@ export default new Vuex.Store({
         console.log('Something went wrong while deleting post from database.\n', error);
       }
     },
+    async updatePost({ commit }, post) {
+      try {
+        await axios.put(`https://jsonplaceholder.typicode.com/posts/${post.id}`, post);
+        commit('updatePost', post);
+      } catch (error) {
+        console.log('Something went wrong while updating post in database.\n', error);
+      }
+    },
   },
   mutations: {
     setPosts: (state, payload) => { state.posts = payload; },
@@ -44,6 +52,10 @@ export default new Vuex.Store({
     deletePost: (state, payload) => {
       const index = state.posts.findIndex((post) => post.id === payload);
       state.posts.splice(index, 1);
+    },
+    updatePost: (state, payload) => {
+      const index = state.posts.findIndex((post) => post.id === payload.id);
+      state.posts.splice(index, 1, payload);
     },
   },
   modules: {
