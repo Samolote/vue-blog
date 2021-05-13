@@ -1,14 +1,25 @@
 <template>
   <v-card>
     <v-card-title primary-title>
-      <h3 class="text-h5">{{ title.slice(0, 20) }}</h3>
+      <h3 class="text-h5">
+        {{ title.slice(0, 20) }}
+      </h3>
     </v-card-title>
     <v-card-text>
-      <p class="mb-0">{{ body ? body.slice(0, 100) : body }}</p>
+      <p class="mb-0">
+        {{ body ? body.slice(0, 100) : body }}
+        </p>
     </v-card-text>
     <v-divider />
     <v-card-actions>
-      <v-btn text small color="primary">Read more</v-btn>
+      <v-btn
+        text
+        small
+        color="primary"
+        :to="`/post/${id}`"
+      >
+        Read more
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
