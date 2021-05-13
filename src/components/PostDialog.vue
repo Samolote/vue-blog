@@ -16,14 +16,16 @@
       </v-form>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="success" depressed @click="dialog = false">Confirm</v-btn>
-        <v-btn color="error" depressed @click="dialog = false">Close</v-btn>
+        <v-btn color="success" depressed @click="handleClickConfirm">Confirm</v-btn>
+        <v-btn color="error" depressed @click="handleClickCancel">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'PostDialog',
   data() {
@@ -40,6 +42,18 @@ export default {
         (value) => value.length >= 50 || 'Minimum length is 50 characters.',
       ],
     };
+  },
+  methods: {
+    ...mapActions(['addPost']),
+    handleClickConfirm() {
+      if (this.$refs.form.validate()) {
+        this.dialog = false;
+        this.addPost(this.post);
+      }
+    },
+    handleClickCancel() {
+      this.dialog = false;
+    },
   },
 };
 </script>

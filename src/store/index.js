@@ -20,9 +20,18 @@ export default new Vuex.Store({
         console.log('Something went wrong while fetching posts from database.\n', error);
       }
     },
+    async addPost({ commit }, post) {
+      try {
+        const { data } = await axios.post('https://jsonplaceholder.typicode.com/posts?_limit=6', post);
+        commit('addPost', data);
+      } catch (error) {
+        console.log('Something went wrong while adding post to database.\n', error);
+      }
+    },
   },
   mutations: {
     setPosts: (state, payload) => { state.posts = payload; },
+    addPost: (state, payload) => { state.posts.push(payload); },
   },
   modules: {
   },
