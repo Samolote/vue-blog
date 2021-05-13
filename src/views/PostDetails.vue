@@ -9,8 +9,8 @@
       </v-card-text>
       <v-divider />
       <v-card-actions>
-        <v-btn color="primary" depressed>Edit</v-btn>
-        <v-btn color="error" depressed @click="handleClickDelete">Delete</v-btn>
+        <PostDialogEdit :post="post" />
+        <v-btn class="ml-2" color="error" depressed @click="handleClickDelete">Delete</v-btn>
       </v-card-actions>
     </v-card>
     <p v-else>Loading post...</p>
@@ -19,9 +19,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import PostDialogEdit from '@/components/PostDialogEdit.vue';
 
 export default {
   name: 'PostDetails',
+  components: { PostDialogEdit },
   computed: {
     ...mapGetters(['getPostById']),
     post() {
