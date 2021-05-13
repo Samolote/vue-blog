@@ -9,7 +9,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import TheNavbar from './components/TheNavbar.vue';
+import TheNavbar from '@/components/TheNavbar.vue';
 
 export default {
   components: { TheNavbar },
