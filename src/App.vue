@@ -8,10 +8,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import TheNavbar from './components/TheNavbar.vue';
 
 export default {
   components: { TheNavbar },
   name: 'App',
+  methods: mapActions(['fetchPosts']),
+  created() {
+    this.fetchPosts();
+  },
 };
 </script>
