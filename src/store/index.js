@@ -10,6 +10,7 @@ export default new Vuex.Store({
   },
   getters: {
     postsChronological: (state) => state.posts.reverse(),
+    getPostById: (state) => (id) => state.posts.find((post) => post.id === id),
   },
   actions: {
     async fetchPosts({ commit }) {
