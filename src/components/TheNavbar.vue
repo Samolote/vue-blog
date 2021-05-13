@@ -7,12 +7,15 @@
       </v-app-bar-title>
     </router-link>
     <v-spacer />
-    <v-btn depressed color="primary">Create</v-btn>
+    <PostDialog />
   </v-app-bar>
 </template>
 
 <script>
+import PostDialog from '@/components/PostDialog.vue';
+
 export default {
   name: 'TheNavbar',
+  components: { PostDialog },
 };
 </script>
