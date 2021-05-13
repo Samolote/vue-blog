@@ -29,10 +29,22 @@ export default new Vuex.Store({
         console.log('Something went wrong while adding post to database.\n', error);
       }
     },
+    async deletePost({ commit }, id) {
+      try {
+        await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+        commit('deletePost', id);
+      } catch (error) {
+        console.log('Something went wrong while deleting post from database.\n', error);
+      }
+    },
   },
   mutations: {
     setPosts: (state, payload) => { state.posts = payload; },
     addPost: (state, payload) => { state.posts.push(payload); },
+    deletePost: (state, payload) => {
+      const index = state.posts.findIndex((post) => post.id === payload);
+      state.posts.splice(index, 1);
+    },
   },
   modules: {
   },
