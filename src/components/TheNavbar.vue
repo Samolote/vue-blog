@@ -7,7 +7,14 @@
       </v-app-bar-title>
     </router-link>
     <v-spacer />
-    <PostDialog />
+    <PostDialog
+      buttonText="Create"
+      headingText="Create new post"
+      title=""
+      body=""
+      id=""
+      :edit="false"
+    />
   </v-app-bar>
 </template>
 
